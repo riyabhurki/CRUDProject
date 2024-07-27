@@ -1,13 +1,91 @@
-<h1>Rent List</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1 {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .rent-item {
+            background: #fff;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .rent-item p {
+            margin: 0;
+            padding: 0;
+        }
+        .rent-item a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .rent-item a:hover {
+            text-decoration: underline;
+        }
+        .actions {
+            margin-top: 10px;
+        }
+        .actions a {
+            color: #dc3545;
+            text-decoration: none;
+        }
+        .actions a:hover {
+            text-decoration: underline;
+        }
+        .nav-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rent List</h1>
 
-{% for rent in  object_list %}
-	<p>
-		<a href="{{ rent.get_absolute_url }}">{{ rent.renter }}</a> <br>
-		{{ rent.rv}}<br>
-		<a href="{{ rv.get_absolute_url }}/update">Update</a> - 
-		<a href="{{ rv.get_absolute_url }}/delete">Delete</a>
-	</p>
-{% endfor %}
+        {% for rent in object_list %}
+        <div class="rent-item">
+            <p>
+                <a href="{{ rent.get_absolute_url }}">{{ rent.renter }}</a><br>
+                {{ rent.rv }}<br>
+                <div class="actions">
+                    <a href="{{ rent.get_absolute_url }}/update">Update</a> - 
+                    <a href="{{ rent.get_absolute_url }}/delete">Delete</a>
+                </div>
+            </p>
+        </div>
+        {% endfor %}
 
-<a href="new/">New</a>
-<a href="/">Back to RV-list</a>
+        <div class="nav-links">
+            <a href="new/">New</a> - 
+            <a href="/">Back to RV-list</a>
+        </div>
+    </div>
+</body>
+</html>

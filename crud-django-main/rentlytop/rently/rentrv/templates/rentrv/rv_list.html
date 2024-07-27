@@ -1,13 +1,99 @@
-<h1 style="text-align: center;">RV LIST</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .rv-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .rv-item a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .rv-item a:hover {
+            text-decoration: underline;
+        }
+        .rv-item .actions {
+            margin-top: 10px;
+        }
+        .rv-item .actions a {
+            color: #dc3545;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .rv-item .actions a:hover {
+            text-decoration: underline;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 align="center">RV List</h1>
 
-{% for rv in  object_list %}
-	<p>
-		<a href="{{ rv.get_absolute_url }}">{{ rv.name }}</a> <br>
-		{{ rv.manufacturer}}<br>
-		<a href="{{ rv.get_absolute_url }}/update">Update</a> - 
-		<a href="{{ rv.get_absolute_url }}/delete">Delete</a>
-	</p>
-{% endfor %}
+        {% for rv in object_list %}
+        <div class="rv-item">
+            <p>
+                <a href="{{ rv.get_absolute_url }}">{{ rv.name }}</a><br>
+                {{ rv.manufacturer }}<br>
+                <div class="actions">
+                    <a href="{{ rv.get_absolute_url }}/update">Update</a>-  
+                    <a href="{{ rv.get_absolute_url }}/delete">Delete</a>
+                </div>
+            </p>
+        </div>
+        {% endfor %}
 
-<a href="/new">New</a>
-<a href="/rent">View Rents</a>
+        <div class="nav-links">
+            <a href="/new">New</a>
+            <a href="/rent">View Rents</a>
+        </div>
+    </div>
+</body>
+</html>
